@@ -4,7 +4,7 @@
         <!--begin::Logo-->
         <a href="#" class="brand-logo">
             {{-- <img alt="Logo" src="{{asset('metch')}}/media/logos/logo-light.png" /> --}}
-            <span class="text-center"><i class="fab fa-angrycreative fa-4x"></i></span>
+            <span class="text-center"><i class="fa fa-building" aria-hidden="true"></i></span>
         </a>
         <!--end::Logo-->
         <!--begin::Toggle-->
@@ -31,7 +31,7 @@
             <!--begin::Menu Nav-->
             <ul class="menu-nav">
                 <li class="menu-item menu-item-active" aria-haspopup="true">
-                    <a href="{{route('home')}}" class="menu-link">
+                    <a href="/home" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:/metronic/theme/html/demo1/dist/assets/media/svg/icons/Design/Layers.svg-->
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -43,7 +43,7 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Dashboard</span>
+                        <span class="menu-text">Buildings</span>
                     </a>
                 </li>
                 <li class="menu-section">
@@ -67,7 +67,6 @@
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="menu-submenu">
-        
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link">
@@ -80,27 +79,12 @@
                                         <span></span>
                                     </i>
                                     <span class="menu-text">Users</span>
-                                    <span class="menu-label">
-                                        <span class="label label-rounded label-primary"><?= $count_user ?></span>
-                                    </span>
-                                    
                                 </a>
-                                
                             </li>
                     
                         </ul>
                     </div>
                 </li>
-            
-                <li class="menu-item" aria-haspopup="true">
-                    <a href="#" class="menu-link">
-                        <span class="menu-icon fas fa-cog">
-                           
-                        </span>
-                        <span class="menu-text">App Settings</span>
-                    </a>
-                </li>	
-            
             </ul>
             <!--end::Menu Nav-->
         </div>

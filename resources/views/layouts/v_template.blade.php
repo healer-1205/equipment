@@ -7,7 +7,7 @@
     <!-- Google Tag Manager -->
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
-    <title>Oryfikry | Boilerplate</title>
+    <title>Equipment Management</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -84,7 +84,7 @@
         <!--begin::Logo-->
         <a href="#">
             {{-- <img alt="Logo" src="{{asset('metch')}}/media/logos/logo-light.png" /> --}}
-            <div class="text-white"><i class="fab fa-angrycreative fa-4x"></i></div>
+            <div class="text-white"><i class="fa fa-building" aria-hidden="true"></i></div>
         </a>
         <!--end::Logo-->
         <!--begin::Toolbar-->
@@ -178,7 +178,7 @@
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
                             <span class="text-muted font-weight-bold mr-2">© <?= date('Y'); ?></span>
-                            <a href="#" class="text-dark-75 text-hover-primary">Ory Fikry | BoilerPlate</a>
+                            <a href="#" class="text-dark-75 text-hover-primary">Manufactured by Healer</a>
                         </div>
                         <!--end::Copyright-->
                     </div>

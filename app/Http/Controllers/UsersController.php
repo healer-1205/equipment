@@ -19,7 +19,6 @@ class UsersController extends Controller
     public function index(Request $request)
     {
         $data = [
-            'count_user' => User::latest()->count(),
             'menu'       => 'menu.v_menu_admin',
             'content'    => 'content.view_user',
             'title'    => 'Table User'
