@@ -1,35 +1,31 @@
 <?php
 
-use App\Http\Controllers\LanguageController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
+
+
 
 /*
- * Global Routes
- * Routes that are used between both frontend and backend.
- */
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-// Switch between the included languages
-Route::get('lang/{lang}', [LanguageController::class, 'swap']);
-
-/*
- * Frontend Routes
- * Namespaces indicate folder structure
- */
-Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
-    include_route_files(__DIR__.'/frontend/');
+Route::get('/', function () {
+    return redirect()->action([HomeController::class, 'index']);
 });
 
-/*
- * Backend Routes
- * Namespaces indicate folder structure
- */
-Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
-    /*
-     * These routes need view-backend permission
-     * (good if you want to allow more than one group in the backend,
-     * then limit the backend features by different roles or permissions)
-     *
-     * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
-     * These routes can not be hit if the password is expired
-     */
-    include_route_files(__DIR__.'/backend/');
-});
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/user', [UserController::class, 'index'])->name('user.index');
+
+// Route::get('/user.get_data',[UserController::class, 'get_data'])->name('get_data');
+Route::resource('users', UsersController::class);

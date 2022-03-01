@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -89,9 +90,11 @@ return [
         'string' => 'The :attribute must be at least :min characters.',
         'array' => 'The :attribute must have at least :min items.',
     ],
+    'multiple_of' => 'The :attribute must be a multiple of :value.',
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute format is invalid.',
     'numeric' => 'The :attribute must be a number.',
+    'password' => 'The password is incorrect.',
     'present' => 'The :attribute field must be present.',
     'regex' => 'The :attribute format is invalid.',
     'required' => 'The :attribute field is required.',
@@ -138,120 +141,12 @@ return [
     | Custom Validation Attributes
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
+    | The following language lines are used to swap our attribute placeholder
+    | with something more reader friendly such as "E-Mail Address" instead
+    | of "email". This simply helps us make our message more expressive.
     |
     */
 
-    'attributes' => [
-        'backend' => [
-            'access' => [
-                'permissions' => [
-                    'associated_roles' => 'Associated Roles',
-                    'dependencies' => 'Dependencies',
-                    'display_name' => 'Display Name',
-                    'group' => 'Group',
-                    'group_sort' => 'Group Sort',
+    'attributes' => [],
 
-                    'groups' => [
-                        'name' => 'Group Name',
-                    ],
-
-                    'name' => 'Name',
-                    'first_name' => 'First Name',
-                    'last_name' => 'Last Name',
-                    'system' => 'System',
-                ],
-
-                'roles' => [
-                    'associated_permissions' => 'Associated Permissions',
-                    'name' => 'Name',
-                    'sort' => 'Sort',
-                ],
-
-                'users' => [
-                    'active' => 'Active',
-                    'associated_roles' => 'Associated Roles',
-                    'confirmed' => 'Confirmed',
-                    'email' => 'E-mail Address',
-                    'name' => 'Name',
-                    'last_name' => 'Last Name',
-                    'first_name' => 'First Name',
-                    'other_permissions' => 'Other Permissions',
-                    'password' => 'Password',
-                    'password_confirmation' => 'Password Confirmation',
-                    'send_confirmation_email' => 'Send Confirmation E-mail',
-                    'timezone' => 'Timezone',
-                    'language' => 'Language',
-                ],
-
-                'pages' => [
-                    'name' => 'Page Name',
-                    'slug' => 'Page Slug',
-                    'description' => 'Description',
-                    'cannonical_link' => 'Cannonical Link',
-                    'seo_title' => 'Meta Keywords',
-                    'seo_keywords' => 'Meta Description',
-                    'seo_description' => 'SEO Description',
-                    'status' => 'Status',
-                ],
-
-                'faqs' => [
-                    'question' => 'Question',
-                    'answer' => 'Answer',
-                    'status' => 'Status',
-                ],
-
-                'email-templates' => [
-                    'title' => 'Email Template Title',
-                    'slug' => 'Email Template Slug',
-                    'content' => 'Content',
-                    'status' => 'Status',
-                ],
-
-                'blog-categories' => [
-                    'name' => 'Category Name',
-                    'status' => 'Status',
-                ],
-
-                'blog-tags' => [
-                    'name' => 'Tag Name',
-                    'status' => 'Status',
-                ],
-
-                'blogs' => [
-                    'title' => 'Blog Title',
-                    'blog_categories' => 'Blog Categories',
-                    'publish_date_time' => 'Publish Date & Time',
-                    'featured_image' => 'Featured Image',
-                    'content' => 'Content',
-                    'tags' => 'Tags',
-                    'meta_title' => 'Meta Title',
-                    'slug' => 'Blog Slug',
-                    'cannonical_link' => 'Cannonical Link',
-                    'meta_keywords' => 'Meta Keywords',
-                    'meta_description' => 'Meta Description',
-                    'status' => 'Status',
-                ],
-            ],
-        ],
-
-        'frontend' => [
-            'avatar' => 'Avatar Location',
-            'email' => 'E-mail Address',
-            'first_name' => 'First Name',
-            'last_name' => 'Last Name',
-            'name' => 'Full Name',
-            'password' => 'Password',
-            'password_confirmation' => 'Password Confirmation',
-            'phone' => 'Phone',
-            'message' => 'Message',
-            'new_password' => 'New Password',
-            'new_password_confirmation' => 'New Password Confirmation',
-            'old_password' => 'Old Password',
-            'timezone' => 'Timezone',
-            'language' => 'Language',
-        ],
-    ],
 ];

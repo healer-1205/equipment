@@ -1,63 +1,33 @@
 <?php
 
-use App\Models\Auth\User;
-use Faker\Generator;
+namespace Database\Factories;
+
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = User::class;
 
-$factory->define(User::class, function (Generator $faker) {
-    return [
-        // 'uuid' => Uuid::uuid4()->toString(),
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
-        'password' => bcrypt('1234'),
-        'password_changed_at' => null,
-        'remember_token' => Str::random(10),
-        'confirmation_code' => md5(uniqid(mt_rand(), true)),
-        'active' => true,
-        'status' => true,
-        'confirmed' => true,
-    ];
-});
-
-$factory->state(User::class, 'active', function () {
-    return [
-        'status' => true,
-    ];
-});
-
-$factory->state(User::class, 'inactive', function () {
-    return [
-        'status' => false,
-    ];
-});
-
-$factory->state(User::class, 'confirmed', function () {
-    return [
-        'confirmed' => true,
-    ];
-});
-
-$factory->state(User::class, 'unconfirmed', function () {
-    return [
-        'confirmed' => false,
-    ];
-});
-
-$factory->state(User::class, 'softDeleted', function () {
-    return [
-        'deleted_at' => now(),
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => $this->faker->name,
+            'email' => $this->faker->unique()->safeEmail,
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ];
+    }
+}

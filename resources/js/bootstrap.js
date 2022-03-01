@@ -1,30 +1,17 @@
-/**
- * This bootstrap file is used for both frontend and backend
- */
-
-import _ from 'lodash'
-import axios from 'axios'
-import Swal from 'sweetalert2';
-import $ from 'jquery';
-import 'popper.js'; // Required for BS4
-import 'bootstrap';
-import 'datatables.net';
-import 'datatables.net-bs4';
-import 'select2';
-import moment from 'moment';
-import 'moment-timezone';
-import 'eonasdan-bootstrap-datetimepicker-bootstrap4beta';
-// require('tinymce');
+window._ = require('lodash');
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-window.moment = moment;
-window.$ = window.jQuery = $;
-window.Swal = Swal;
-window._ = _; // Lodash
+
+try {
+    window.Popper = require('popper.js').default;
+    window.$ = window.jQuery = require('jquery');
+
+    require('bootstrap');
+} catch (e) {}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
