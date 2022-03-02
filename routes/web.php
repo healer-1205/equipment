@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-// use App\Http\Controllers\UserController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\RoomController;
 
 
 
@@ -26,6 +26,6 @@ Auth::routes();
 
 Route::resource('home', HomeController::class);
 // Route::get('/home', [HomeController::class, 'index'])->name('home.index');
-
+Route::resource('room', RoomController::class);
 // Route::get('/user.get_data',[UserController::class, 'get_data'])->name('get_data');
 Route::resource('users', UsersController::class);
