@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\RoomController;
-
+use App\Http\Controllers\EquipmentController;
 
 
 /*
@@ -29,3 +29,4 @@ Route::resource('home', HomeController::class);
 Route::resource('room', RoomController::class);
 // Route::get('/user.get_data',[UserController::class, 'get_data'])->name('get_data');
 Route::resource('users', UsersController::class);
+Route::resource('equipment', EquipmentController::class);

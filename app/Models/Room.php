@@ -18,4 +18,9 @@ class Room extends Model
     {
         return $this->belongsTo(Building::class);
     }
+
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class);
+    }
 }

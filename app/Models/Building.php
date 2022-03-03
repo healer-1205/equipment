@@ -17,4 +17,9 @@ class Building extends Model
     {
         return $this->hasMany(Room::class);
     }
+
+    public function equipments()
+    {
+        return $this->hasMany(Equipment::class);
+    }
 }

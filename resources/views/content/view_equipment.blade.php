@@ -4,18 +4,22 @@
           <div class="card-header">
               <h2>{{$title}}</h2>
               <div class="d-flex flex-row-reverse"><button
-                      class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewRoom"><i
+                      class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewEquipment"><i
                           class="fas fa-plus"></i>add data </button></div>
           </div>
           <div class="card-body">
               <div class="col-md-12">
                   <div class="table-responsive">
-                      <table class="table" id="tableRoom">
+                      <table class="table" id="tableBuilding">
                           <thead class="font-weight-bold text-center">
                               <tr>
                                   {{-- <th>No.</th> --}}
+                                  <th>Product</th>
                                   <th>Building</th>
                                   <th>Room</th>
+                                  <th>User</th>
+                                  <th>Manufacturer</th>
+                                  <th>Model</th>
                                   <th style="width:90px;">Action</th>
                               </tr>
                           </thead>
@@ -40,26 +44,38 @@
 </div>
 
 <!-- Modal-->
-<div class="modal fade" id="modal-room" data-backdrop="static" tabindex="-1" role="dialog"
+<div class="modal fade" id="modal-equipment" data-backdrop="static" tabindex="-1" role="dialog"
   aria-labelledby="staticBackdrop" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <div class="modal-header bg-primary">
-              <h5 class="modal-title text-white" id="exampleModalLabel">Add Room</h5>
+              <h5 class="modal-title text-white" id="exampleModalLabel">Add Equipment</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <i aria-hidden="true" class="ki ki-close"></i>
               </button>
           </div>
           <div class="modal-body">
-              <form id="formRoom" name="formRoom">
+              <form id="formEquipment" name="formEquipment">
                   <div class="form-group">
                       <select name="building_id" class="form-control" id="building">
                         @foreach ($buildings as $building)
                           <option value="{{$building->id}}">{{$building->name}}</option>
                         @endforeach
                       </select><br>
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Name"><br>
-                      <input type="hidden" name="room_id" id="room_id" value="">
+                      <select name="room_id" class="form-control" id="room">
+                        @foreach ($rooms as $room)
+                          <option value="{{$room->id}}">{{$room->name}}</option>
+                        @endforeach
+                      </select><br>
+                      <select name="user_id" class="form-control" id="user">
+                        @foreach ($users as $user)
+                          <option value="{{$user->id}}">{{$user->name}}</option>
+                        @endforeach
+                      </select><br>
+                      <input type="text" name="product" class="form-control" id="product" placeholder="Product Name"><br>
+                      <input type="text" name="manufacturer" class="form-control" id="manufacturer" placeholder="Manufacturer Name"><br>
+                      <input type="text" name="model" class="form-control" id="model" placeholder="Model Name"><br>
+                      <input type="hidden" name="equipment_id" id="equipment_id" value="">
                   </div>
               </form>
           </div>
@@ -96,7 +112,7 @@
           })
       }
       // table serverside
-      var table = $('#tableRoom').DataTable({
+      var table = $('#tableBuilding').DataTable({
           processing: false,
           serverSide: true,
           ordering: false,
@@ -104,21 +120,38 @@
           buttons: [
               'copy', 'excel', 'pdf'
           ],
-          ajax: "{{ route('room.index') }}",
-          columns: [{
-                  data: 'building.name',
-                  name: 'building.name'
-              },
-              {
-                  data: 'name',
-                  name: 'name'
-              },
-              {
-                  data: 'action',
-                  name: 'action',
-                  orderable: false,
-                  searchable: false
-              },
+          ajax: "{{ route('equipment.index') }}",
+          columns: [
+            {
+              data: 'product',
+              name: 'product'
+            },
+            {
+              data: 'building.name',
+              name: 'building.name'
+            },
+            {
+              data: 'room.name',
+              name: 'room.name'
+            },
+            {
+              data: 'user.name',
+              name: 'user.name'
+            },
+            {
+              data: 'manufacturer',
+              name: 'manufacturer'
+            },
+            {
+              data: 'model',
+              name: 'model'
+            },
+            {
+              data: 'action',
+              name: 'action',
+              orderable: false,
+              searchable: false
+            },
           ]
       });
       
@@ -129,21 +162,25 @@
           }
       });
       // initialize btn add
-      $('#createNewRoom').click(function () {
-          $('#saveBtn').val("create room");
-          $('#room_id').val('');
-          $('#formRoom').trigger("reset");
-          $('#modal-room').modal('show');
+      $('#createNewEquipment').click(function () {
+          $('#saveBtn').val("create equipment");
+          $('#equipment_id').val('');
+          $('#formEquipment').trigger("reset");
+          $('#modal-equipment').modal('show');
       });
       // initialize btn edit
-      $('body').on('click', '.editRoom', function () {
-          var room_id = $(this).data('id');
-          $.get("{{route('room.index')}}" + '/' + room_id + '/edit', function (data) {
-              $('#saveBtn').val("edit-room");
-              $('#modal-room').modal('show');
-              $('#room_id').val(data.id);
-              $('#name').val(data.name);
+      $('body').on('click', '.editEquipment', function () {
+          var equipment_id = $(this).data('id');
+          $.get("{{route('equipment.index')}}" + '/' + equipment_id + '/edit', function (data) {
+              $('#saveBtn').val("edit-equipment");
+              $('#modal-equipment').modal('show');
+              $('#equipment_id').val(data.id);
+              $('#product').val(data.product);
+              $('#manufacturer').val(data.manufacturer);
+              $('#model').val(data.model);
               $('#building').val(data.building_id);
+              $('#room').val(data.room_id);
+              $('#user').val(data.user_id);
           })
       });
       // initialize btn save
@@ -152,14 +189,14 @@
           $(this).html('Save');
 
           $.ajax({
-              data: $('#formRoom').serialize(),
-              url: "{{ route('room.store') }}",
+              data: $('#formEquipment').serialize(),
+              url: "{{ route('equipment.store') }}",
               type: "POST",
               dataType: 'json',
               success: function (data) {
 
-                  $('#formRoom').trigger("reset");
-                  $('#modal-room').modal('hide');
+                  $('#formEquipment').trigger("reset");
+                  $('#modal-equipment').modal('hide');
                   swal_success();
                   table.draw();
 
@@ -172,8 +209,8 @@
 
       });
       // initialize btn delete
-      $('body').on('click', '.deleteRoom', function () {
-          var room_id = $(this).data("id");
+      $('body').on('click', '.deleteEquipment', function () {
+          var equipment_id = $(this).data("id");
 
           Swal.fire({
               title: 'Are you sure?',
@@ -187,7 +224,7 @@
               if (result.isConfirmed) {
                   $.ajax({
                       type: "DELETE",
-                      url: "{{route('room.store')}}" + '/' + room_id,
+                      url: "{{route('equipment.store')}}" + '/' + equipment_id,
                       success: function (data) {
                           swal_success();
                           table.draw();
