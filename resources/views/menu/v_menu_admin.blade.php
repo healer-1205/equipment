@@ -78,10 +78,6 @@
                         <span class="menu-text">Equipments</span>
                     </a>
                 </li>
-                <li class="menu-section">
-                    <h4 class="menu-text">Custom</h4>
-                    <i class="menu-icon ki ki-bold-more-hor icon-md"></i>
-                </li>
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
@@ -95,14 +91,14 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Applications</span>
+                        <span class="menu-text">Managers</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="menu-submenu">
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link">
-                                    <span class="menu-text">Applications</span>
+                                    <span class="menu-text">Managers</span>
                                 </span>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
