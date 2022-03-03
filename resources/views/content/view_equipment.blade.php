@@ -66,7 +66,7 @@
                         @foreach ($rooms as $room)
                           <option value="{{$room->id}}">{{$room->name}}</option>
                         @endforeach
-                      </select><br>
+                      </select><br> 
                       <select name="user_id" class="form-control" id="user">
                         @foreach ($users as $user)
                           <option value="{{$user->id}}">{{$user->name}}</option>
