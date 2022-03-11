@@ -32,7 +32,7 @@ class HomeController extends Controller
         ];
 
         if ($request->ajax()) {
-            $q_building = Building::select('*')->orderByDesc('created_at');
+            $q_building = Building::select('*')->orderBy('name');
             return Datatables::of($q_building)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){

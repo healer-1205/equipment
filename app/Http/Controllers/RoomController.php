@@ -32,7 +32,9 @@ class RoomController extends Controller
         ];
         
         if ($request->ajax()) {
-            $q_room = Room::with('building')->select('*')->orderByDesc('created_at');
+            $q_room = Room::with(['building' => function ($query) {
+                $query->orderBy('name');
+            }])->select('*');
             return Datatables::of($q_room)
                     ->addIndexColumn()
                     ->addColumn('action', function($row){
