@@ -57,7 +57,7 @@
     <script>
         function swag_logout() {
             Swal.fire({
-                title: 'Wanna Out?',
+                title: 'Log Out?',
                 text: "",
                 icon: 'warning',
                 showCancelButton: true,
@@ -140,6 +140,7 @@
                         </div>
                         <!--end::Header Menu Wrapper-->
                         <!--begin::Topbar-->
+                        <h2 style="padding-top: 20px">Queens Assets</h2>
                         <div class="topbar">
                             <div class="topbar-item" onclick="swag_logout()">
                                 <div

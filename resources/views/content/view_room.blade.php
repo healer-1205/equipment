@@ -5,7 +5,7 @@
               <h2>{{$title}}</h2>
               <div class="d-flex flex-row-reverse"><button
                       class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewRoom"><i
-                          class="fas fa-plus"></i>add data </button></div>
+                          class="fas fa-plus"></i>add Room </button></div>
           </div>
           <div class="card-body">
               <div class="col-md-12">

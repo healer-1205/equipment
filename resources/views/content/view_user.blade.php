@@ -5,7 +5,7 @@
                 <h2>{{$title}}</h2>
                 <div class="d-flex flex-row-reverse"><button
                         class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewUser"><i
-                            class="fas fa-plus"></i>add data </button></div>
+                            class="fas fa-plus"></i>add User </button></div>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
@@ -60,9 +60,8 @@
                         <input type="text" name="name" class="form-control" id="name" placeholder="Nama"><br>
                         <input type="email" name="email" class="form-control" id="email" placeholder="email"><br>
                         <select name="level" class="form-control" id="level">
-                            <option value="-">Pilih Level</option>
-                            <option value="1">Operator</option>
-                            <option value="2">Member</option>
+                            <option value="1">Admin</option>
+                            <option value="2">User</option>
                         </select><br>
                         <input type="text" name="password" class="form-control" placeholder="password"><br>
                         <input type="hidden" name="user_id" id="user_id" value="">

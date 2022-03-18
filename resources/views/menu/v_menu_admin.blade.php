@@ -4,7 +4,7 @@
         <!--begin::Logo-->
         <a href="#" class="brand-logo">
             {{-- <img alt="Logo" src="{{asset('metch')}}/media/logos/logo-light.png" /> --}}
-            <span class="text-center"><i class="fa fa-building" aria-hidden="true"></i></span>
+            <span class="text-center" style="color: wheat, font-size: 28px;">Queens Assets</span>
         </a>
         <!--end::Logo-->
         <!--begin::Toggle-->
@@ -78,6 +78,7 @@
                         <span class="menu-text">Equipments</span>
                     </a>
                 </li>
+                @if (Auth::user()->level == 1)
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
@@ -91,14 +92,14 @@
                             </svg>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">Managers</span>
+                        <span class="menu-text">Admin</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="menu-submenu">
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link">
-                                    <span class="menu-text">Managers</span>
+                                    <span class="menu-text">Admin</span>
                                 </span>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
@@ -113,6 +114,7 @@
                         </ul>
                     </div>
                 </li>
+                @endif
             </ul>
             <!--end::Menu Nav-->
         </div>
