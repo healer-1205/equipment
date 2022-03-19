@@ -5,7 +5,7 @@
                 <h2>{{$title}}</h2>
                 <div class="d-flex flex-row-reverse"><button
                         class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewUser"><i
-                            class="fas fa-plus"></i>add User </button></div>
+                            class="fas fa-plus"></i>Add User </button></div>
             </div>
             <div class="card-body">
                 <div class="col-md-12">
@@ -48,7 +48,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary">
-                <h5 class="modal-title text-white" id="exampleModalLabel">Modal User</h5>
+                <h5 class="modal-title text-white" id="exampleModalLabel">Add User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
@@ -57,7 +57,7 @@
                 <form id="formUser" name="formUser">
                     <div class="form-group">
 
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Nama"><br>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Name"><br>
                         <input type="email" name="email" class="form-control" id="email" placeholder="email"><br>
                         <select name="level" class="form-control" id="level">
                             <option value="1">Admin</option>
