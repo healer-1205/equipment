@@ -17,15 +17,14 @@ class CreateEquipmentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('building_id');
             $table->unsignedBigInteger('room_id');
-            $table->unsignedBigInteger('user_id');
             $table->string('product');
             $table->string('manufacturer');
             $table->string('model');
+            $table->string('desc');
             $table->timestamps();
 
             $table->foreign('building_id')->references('id')->on('buildings')->onDelete('cascade');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -39,7 +38,6 @@ class CreateEquipmentsTable extends Migration
         Schema::dropIfExists('equipments', function (Blueprint $table) {
             $table->dropForeign('equipments_building_id_foreign');
             $table->dropForeign('equipments_room_id_foreign');
-            $table->dropForeign('equipments_user_id_foreign');
         });
     }
 }

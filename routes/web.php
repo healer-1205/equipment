@@ -29,4 +29,5 @@ Route::resource('home', HomeController::class);
 Route::resource('room', RoomController::class);
 // Route::get('/user.get_data',[UserController::class, 'get_data'])->name('get_data');
 Route::resource('users', UsersController::class);
+Route::post('/import/equipment',[EquipmentController::class, 'importEquipment'])->name('importEquipment');
 Route::resource('equipment', EquipmentController::class);

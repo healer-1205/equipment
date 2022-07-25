@@ -3,9 +3,18 @@
       <div class="card">
           <div class="card-header">
               <h2>{{$title}}</h2>
-              <div class="d-flex flex-row-reverse"><button
-                      class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewEquipment"><i
-                          class="fas fa-plus"></i>Add Equipment </button></div>
+              <div class="d-flex flex-row-reverse">
+								<input autocomplete="new-password" type="hidden" name="_token" value="{{csrf_token()}}"/>
+								<button class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder" id="createNewEquipment">
+									<i class="fas fa-plus"></i>Add Equipment
+								</button>
+								<form id="import-csv-form" method="POST" action="#" accept-charset="UTF-8"  enctype="multipart/form-data">
+									<input class="" type="file" id="customer_csv" name="customer_csv" accept=".csv, text/csv, .xlsx"/>
+									<button type="submit" class="btn btn-sm btn-pill btn-outline-primary font-weight-bolder mr-5" id="importEquipment">
+										Import
+									</button>
+								</form>
+							</div>
           </div>
           <div class="card-body">
               <div class="col-md-12">
@@ -17,9 +26,9 @@
                                   <th>Product</th>
                                   <th>Building</th>
                                   <th>Room</th>
-                                  <th>User</th>
                                   <th>Manufacturer</th>
                                   <th>Model</th>
+                                  <th>Detail</th>
                                   <th style="width:90px;">Action</th>
                               </tr>
                           </thead>
@@ -67,14 +76,10 @@
                           <option value="{{$room->id}}">{{$room->name}}</option>
                         @endforeach
                       </select><br>
-                      <select name="user_id" class="form-control" id="user">
-                        @foreach ($users as $user)
-                          <option value="{{$user->id}}">{{$user->name}}</option>
-                        @endforeach
-                      </select><br>
                       <input type="text" name="product" class="form-control" id="product" placeholder="Product Name"><br>
                       <input type="text" name="manufacturer" class="form-control" id="manufacturer" placeholder="Manufacturer Name"><br>
                       <input type="text" name="model" class="form-control" id="model" placeholder="Model Name"><br>
+                      <input type="text" name="desc" class="form-control" id="desc" placeholder="Description"><br>
                       <input type="hidden" name="equipment_id" id="equipment_id" value="">
                   </div>
               </form>
@@ -86,8 +91,6 @@
       </div>
   </div>
 </div>
-
-
 
 @push('scripts')
 <script>
@@ -135,16 +138,16 @@
               name: 'room.name'
             },
             {
-              data: 'user.name',
-              name: 'user.name'
-            },
-            {
               data: 'manufacturer',
               name: 'manufacturer'
             },
             {
               data: 'model',
               name: 'model'
+            },
+            {
+              data: 'desc',
+              name: 'desc'
             },
             {
               data: 'action',
@@ -160,6 +163,54 @@
           headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
           }
+      });
+			$('#import-csv-form').on("submit", function(e){
+					e.preventDefault(); //form will not submitted
+					$.ajax({
+							url: '{{ url('/import/equipment') }}',
+							method:"POST",
+							data:new FormData(this),
+							contentType:false,          // The content type used when sending data to the server.
+							cache:false,                // To unable request pages to be cached
+							processData:false,          // To send DOMDocument or non processed data file it is set to false
+							success: function(result){
+								if(result.message == 'empty') {
+									Swal.fire({
+										title: 'Warning',
+										text: "You can't upload empty file!",
+										icon: 'warning',
+										showConfirmButton: false,
+									});
+								}
+								else if(result.message == 'field missing') {
+									Swal.fire({
+										title: 'Warning',
+										text: "Some fields are missing!",
+										icon: 'warning',
+										showConfirmButton: false,
+									});
+								}
+								else if(result.message == 'value missing') {
+									Swal.fire({
+										title: 'Warning',
+										text: "Some values are missing!",
+										icon: 'warning',
+										showConfirmButton: false,
+									});
+								}
+								else {
+									Swal.fire({
+										title: 'Success',
+										text: "Imported successfully!",
+										icon: 'success',
+										showConfirmButton: false,
+									});
+								}
+								location.reload();
+							},
+							error:function(){
+							}
+					});
       });
       // initialize btn add
       $('#createNewEquipment').click(function () {
@@ -180,7 +231,6 @@
               $('#model').val(data.model);
               $('#building').val(data.building_id);
               $('#room').val(data.room_id);
-              $('#user').val(data.user_id);
           })
       });
       // initialize btn save

@@ -14,10 +14,10 @@ class Equipment extends Model
     protected $fillable = [
         'building_id',
         'room_id',
-        'user_id',
         'product',
         'manufacturer',
-        'model'
+        'model',
+				'desc'
     ];
 
     public function building()
@@ -28,10 +28,5 @@ class Equipment extends Model
     public function room()
     {
         return $this->belongsTo(Room::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }
