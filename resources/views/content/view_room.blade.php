@@ -131,6 +131,7 @@
       // initialize btn add
       $('#createNewRoom').click(function () {
           $('#saveBtn').val("create room");
+					$('#exampleModalLabel').text('Add Room');
           $('#room_id').val('');
           $('#formRoom').trigger("reset");
           $('#modal-room').modal('show');
@@ -141,6 +142,7 @@
           $.get("{{route('room.index')}}" + '/' + room_id + '/edit', function (data) {
               $('#saveBtn').val("edit-room");
               $('#modal-room').modal('show');
+							$('#exampleModalLabel').text('Edit Room');
               $('#room_id').val(data.id);
               $('#name').val(data.name);
               $('#building').val(data.building_id);

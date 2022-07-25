@@ -215,6 +215,7 @@
       // initialize btn add
       $('#createNewEquipment').click(function () {
           $('#saveBtn').val("create equipment");
+					$('#exampleModalLabel').text('Add Equipment');
           $('#equipment_id').val('');
           $('#formEquipment').trigger("reset");
           $('#modal-equipment').modal('show');
@@ -225,10 +226,12 @@
           $.get("{{route('equipment.index')}}" + '/' + equipment_id + '/edit', function (data) {
               $('#saveBtn').val("edit-equipment");
               $('#modal-equipment').modal('show');
+							$('#exampleModalLabel').text('Edit Equipment');
               $('#equipment_id').val(data.id);
               $('#product').val(data.product);
               $('#manufacturer').val(data.manufacturer);
               $('#model').val(data.model);
+              $('#desc').val(data.desc);
               $('#building').val(data.building_id);
               $('#room').val(data.room_id);
           })

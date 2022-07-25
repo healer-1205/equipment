@@ -121,6 +121,7 @@
         // initialize btn add
         $('#createNewBuilding').click(function () {
             $('#saveBtn').val("create building");
+						$('#exampleModalLabel').text('Add Building');
             $('#building_id').val('');
             $('#formBuilding').trigger("reset");
             $('#modal-building').modal('show');
@@ -131,6 +132,7 @@
             $.get("{{route('home.index')}}" + '/' + building_id + '/edit', function (data) {
                 $('#saveBtn').val("edit-building");
                 $('#modal-building').modal('show');
+								$('#exampleModalLabel').text('Edit Building');
                 $('#building_id').val(data.id);
                 $('#name').val(data.name);
             })
